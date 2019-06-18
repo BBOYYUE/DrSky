@@ -1,0 +1,183 @@
+<html>
+    <head>
+        <meta charset="utf8">
+    </head>
+    <body>
+        <ol>
+            <li>展示页  ShowView
+                <ol>
+                    <li>资料库  LinkLibary
+                        <ol>
+                            <li>字母索引</li>
+                            <li>limit30</li>
+                        </ol>
+                    </li>
+                    <li>技能树  skilltree
+                        <ol>
+                            <li>这里要实现一个横版的技能树,技能树的每一个个分支都是一个表,存储着和他有关的资料和笔记</li>
+                        </ol>
+                    </li>
+                    <li>文档库  DocLibary
+                        <ol>
+                            <li>储存着各种官方文档类的东西</li>
+                        </ol>
+                    </li>
+                    <li>笔记心得    diary
+                        <ol>
+                            <li>放弃了富文本编辑器，这里直接上传html文件</li>
+                       </ol>
+                    </li>
+                    <li>脚本库     CodeLibary
+                        <ol><li>脚本库需要一个文本编辑器来实现概览</li></ol>
+                    </li>
+                    <li>子项目      OtherView
+                        <ol>
+                            <li>在这里是一个目录</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                管理页
+                <ol>
+                    <li>资料库
+                        <ol>
+                            <li>资料管理</li>
+                            <li>资料新增</li>
+                            <li>资料修改</li>
+                        </ol>
+                    <li>技能树
+                        <ol>
+                            <li>技能树新增枝干</li>
+                            <li>枝叶内容勾选</li>
+                        </ol>
+                    </li>
+                    <li>文档库
+                        <ol>
+                            <li>文档管理</li>
+                            <li>文档新增</li>
+                            <li>文档编辑</li>
+                        </ol>
+                    </li>
+                    <li>笔记心得
+                        <ol>
+                            <li>笔记管理</li>
+                            <li>笔记编辑</li>
+                        </ol>
+                    </li>
+                    <li>脚本库
+                        <ol>
+                            <li>脚本管理</li>
+                            <li>脚本上传</li>
+                        </ol>
+                    </li>
+                    <li>子项目管理</li>
+                    <li>网站流量统计</li>
+                </ol>
+            </li>
+            <li>数据库
+                <ol>
+                    <li>
+        /*
+        插入根目录
+        'INSTER INTO table_libary (`column_libary_name`,`column_libary_id`,`column_libary_type`,`column_libary_value,`column_libary_user) VALUES('网站根目录','1231323123','value','path','root')';
+        'INSTER INTO table_libary (`column_libary_name`,`column_libary_id`,`column_libary_type`,`column_libary_value,`column_libary_user) VALUES('网站根目录','1231323123','type','menu','root')';
+        'INSTER INTO table_libary (`column_libary_name`,`column_libary_id`,`column_libary_type`,`column_libary_value,`column_libary_user) VALUES('网站根目录','1231323123','extends','','root')';
+        'INSTER INTO table_libary (`column_libary_name`,`column_libary_id`,`column_libary_type`,`column_libary_value,`column_libary_user) VALUES('网站根目录','1231323123','show','y','root')';
+        'INSTRT INTO table_libarylog (`column_libary_id`,`column_libarylog_user`) VALUES (`1231323123`,`root`);
+        插入展示页
+        'INSTER INTO table_libary (`column_libary_name`,`column_libary_id`,`column_libary_type`,`column_libary_value,`column_libary_user) VALUES('展示页','2345678','value','path_ShowView','root')';
+        'INSTER INTO table_libary (`column_libary_name`,`column_libary_id`,`column_libary_type`,`column_libary_value,`column_libary_user) VALUES('展示页','2345678','type','menu','root')';
+        'INSTER INTO table_libary (`column_libary_name`,`column_libary_id`,`column_libary_type`,`column_libary_value,`column_libary_user) VALUES('展示页','2345678','extends','path','root')';
+        'INSTER INTO table_libary (`column_libary_name`,`column_libary_id`,`column_libary_type`,`column_libary_value,`column_libary_user) VALUES('展示页','2345678','show','y','root')';
+        'INSTRT INTO table_libarylog (`column_libary_id`,`column_libarylog_user`) VALUES (`2345678`,`root`);
+        插入展示页
+        */
+                        
+                        资源类型：表示每个资源都应该有的属性
+                        <ol>
+                            <li>资源类型: extends 资源内容:表示继承自某个关键字或菜单项</li>
+                            <li>资源类型: value 资源内容:表示这个资源的值</li>
+                            <li>资源类型: type 资源内容:这个资源的类型 
+                                <ol>
+                                    <li>menu 表示这是一个菜单项</li>
+                                    <li>link 表示这是一个链接</li>
+                                    <li>keyword 表示这是一个关键字</li>
+                                    <li>html 表示这是一个html文件</li>
+                                    <li>title 表示这是一个资源的注释</li>
+                                    <li>code 表示这是一个脚本</li>
+                                </ol>    
+                            </li>
+                            <li>
+                                资源类型:show 资源内容:表示这个资源是否展示
+                            </li>
+                            <li>资源类型: model 资源内容:表示他是属于哪个页面的
+                                //model 被取消了
+                                <ol>
+                                    <li>infomation 资源页</li>
+                                    <li>skilltree 技能树</li>
+                                    <li>libary 文档库</li>
+                                    <li>diary 日记本</li>
+                                    <li>code 脚本库</li>
+                                    <li>other 子项目</li>
+                                    <li>log  网站流量统计</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>资源信息表:  table_libary
+                        <ol>
+                            <li>自增id</li>   id
+                            <li>资源名</li>     column_libary_name     
+                            <li>资源索引id  主键</li>   column_libary_id
+                            <li>资源类型</li>   column_libary_type
+                            <li>资源内容</li>   column_libary_value
+                            <li>资源所有者</li>     column_libary_user
+                        </ol>
+                    </li>
+                    <li>资源内容表  table_content
+                        <ol>
+                            <li>资源内容</li>   column_content_value    
+                            <li>资源索引id</li>    column_content_id
+                        </ol>
+                    </li>
+                    <li>资源日志表  table_libarylog
+                        <ol>
+                            <li>自增id</li>    column_libarylog_id
+                            <li>资源索引id 子键</li>   column_libarylog_id 
+                            <li>资源修改日期</li>    column_libarylog_id
+                            <li>修改资源的用户</li>     column_libarylog_user
+                        </ol>
+                    </li>
+                    <li>用户表     table_user
+                        <ol>
+                            <li>自增id</li>    id
+                            <li>用户id</li>    cloumn_user_id
+                            <li>用户名</li>    cloumn_user_name
+                            <li>用户密码</li>   cloumn_user_pass
+                            <li>用户权限</li>   cloumn_user_permissions
+                        </ol>
+                    </li>
+                    <li>
+                        用户日志表 userLog
+                        <ol>
+                            <li>自增id</li>
+                            <li>用户id</li>
+                            <li>修改日期</li>
+                            <li>修改者id</li>
+                        </ol>
+                    </li>
+                    <li>
+                        流量统计表  serverLog
+                        <ol>
+                            <li>日访问量</li>
+                            <li>月访问量</li>
+                            <li>年访问量</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+
+    </body>
+</html>
